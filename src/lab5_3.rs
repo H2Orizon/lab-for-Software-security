@@ -11,7 +11,7 @@ pub fn cipher_rsa_for_num(){
         e += 2;
     }
 
-    let m: i128 = 100;
+    let m: i128 = 122;
 
     let d_i128 = mod_inv(e as i128, euler_f as i128).expect("");
     let d: u64 = ((d_i128 % euler_f as i128 + euler_f as i128) % euler_f as i128) as u64;
@@ -24,7 +24,7 @@ pub fn cipher_rsa_for_num(){
 
     println!("p: {p} \t q: {q} \t n: {n}");
     println!("Euler's fn: {euler_f}\t d: {d}");
-    println!("\nopen_key: {:?} \n secret_key: {:?}", open_key, secret_key);
+    println!("\nopen_key: {:?}\n secret_key: {:?}", open_key, secret_key);
     println!("crypt: {c} \t encrypt: {enc}")
 }
 
@@ -39,7 +39,7 @@ pub fn generate_prime() -> u32 {
     }
 }
 
-pub fn is_prime(candidate:u32) -> bool {
+fn is_prime(candidate:u32) -> bool {
     if candidate <= 3 {
         return true;
     } else if candidate % 3 == 0 {

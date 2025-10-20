@@ -14,7 +14,7 @@ pub fn vigenere_cipher() {
 
 fn crypt_lab5_2 (key_word:&Vec<char>, vector_abs:&Vec<char>, abs_powr: usize, c:&str) -> String{
     let mut result = String::new();
-        for (i,ch) in c.chars().enumerate(){
+    for (i,ch) in c.chars().enumerate(){
         let key_char = key_word[i % key_word.len()];
         if let Some(p_inx) = vector_abs.iter().position(|&c| c == ch){ 
             let key_ind = vector_abs.iter().position(|&c| c == key_char).unwrap();

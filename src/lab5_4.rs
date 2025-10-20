@@ -3,14 +3,13 @@ use std::io;
 use crate::lab5_3::{gcd, generate_prime, mod_inv, mod_pow};
 
 pub fn cipher_rsa_for_string(){
-    let mut input_line: String = String::new();
-    // input_line = get_string_from_line();
-    input_line = "Цікаво воно спарює з і та е.".to_string();
-    // input_line = "Cryptography is fun and educational! Learning RSA encryption and decryption with Python helps understand public key cryptosystems".to_string();
+    // let mut input_line: String = get_string_from_line();
+    let input_line = "Цікаво воно спарює з і та е.".to_string();
+    //let input_line = "Cryptography is fun and educational! Learning RSA encryption and decryption with Python helps understand public key cryptosystems".to_string();
     let input_byte_array: &[u8] = input_line.as_bytes();
 
-    let p = /*generate_prime();*/3557;
-    let q = /*generate_prime();*/2579;
+    let p = generate_prime();/*3557;*/
+    let q = generate_prime();/*2579;*/
     let n: u64 = p as u64 * q as u64;
     let euler_f = (p - 1) as u64 * (q - 1) as u64;
 
@@ -21,6 +20,9 @@ pub fn cipher_rsa_for_string(){
     let d_i64 = mod_inv(e as i128, euler_f as i128).expect("");
     let d: u64 = ((d_i64 % euler_f as i128 + euler_f as i128) % euler_f as i128) as u64;
     let mut c: Vec<i128> = vec![];
+    
+    // let open_key = [e, n];
+    // let secret_key = [d, n];
 
     for iter in input_byte_array {
         let crypt_byte: i128 = mod_pow(*iter as i128, e as i128, n as i128);
