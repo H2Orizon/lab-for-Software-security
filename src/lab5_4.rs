@@ -1,5 +1,4 @@
-use rand::{thread_rng,Rng};
-use std::{io, iter};
+use std::io;
 
 use crate::lab5_3::{gcd, generate_prime, mod_inv, mod_pow};
 
